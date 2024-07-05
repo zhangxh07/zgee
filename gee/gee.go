@@ -34,10 +34,12 @@ func (engine *Engine) POST(pattern string, handler HandlerFunc) {
 }
 
 // Run defines the method to start a http server
+// 结构体engine实现了Handler接口的ServeHTTP方法，所以可以传递给ListenAndServe第二个参数
 func (engine *Engine) Run(addr string) (err error) {
 	return http.ListenAndServe(addr, engine)
 }
 
+// 这个方法会自动执行
 func (engine *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	key := req.Method + "-" + req.URL.Path
 	if handler, ok := engine.router[key]; ok {
