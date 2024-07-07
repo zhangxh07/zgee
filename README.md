@@ -1,25 +1,17 @@
-[七天手写web框架参考](https://geektutu.com/post/gee-day1.html)
-###  测试示例
-% curl  -i  localhost:9090/
+### 测试示例
+
+```
+% curl "http://localhost:9090/hello?name=geektutu"
+hello geektutu, you're at /hello
+
+% curl "http://localhost:9090/"
+<h1>Hello Gee</h1>
+
+curl -i "http://localhost:9090/login" -X POST -d 'username=geektutu&password=1234'
 HTTP/1.1 200 OK
-Date: Fri, 05 Jul 2024 03:16:15 GMT
-Content-Length: 15
-Content-Type: text/plain; charset=utf-8
-URL.Path = "/"
+Content-Type: application/json
+Date: Sun, 07 Jul 2024 06:16:11 GMT
+Content-Length: 42
 
-% curl  -i  localhost:9090/hello
-HTTP/1.1 200 OK
-Date: Fri, 05 Jul 2024 03:17:05 GMT
-Content-Length: 66
-Content-Type: text/plain; charset=utf-8
-Header["User-Agent"] = ["curl/7.79.1"]
-Header["Accept"] = ["*/*"]
-
-
-% curl  -i  localhost:9090/zhangxh
-HTTP/1.1 404 Not Found
-Date: Fri, 05 Jul 2024 03:17:30 GMT
-Content-Length: 24
-Content-Type: text/plain; charset=utf-8
-404 NOT FOUND: /zhangxh
-
+{"password":"1234","username":"geektutu"}
+```
